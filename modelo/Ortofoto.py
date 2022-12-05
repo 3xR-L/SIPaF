@@ -1,0 +1,3 @@
+
+class Ortofoto:
+    pass
