@@ -57,7 +57,7 @@ class Ui_VGestionarEDT(object):
         self.frame_principal.setSizePolicy(sizePolicy)
         self.frame_principal.setMinimumSize(QtCore.QSize(750, 135))
         self.frame_principal.setMaximumSize(QtCore.QSize(16777215, 135))
-        self.frame_principal.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame_principal.setStyleSheet("background-color: rgb(240, 240, 240);")#	background-color: rgb(240, 240, 240);
         self.frame_principal.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_principal.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_principal.setObjectName("frame_principal")
