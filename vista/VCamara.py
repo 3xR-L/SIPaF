@@ -1,0 +1,157 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'VCamara.ui'
+#
+# Created by: PyQt5 UI code generator 5.9.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_VCamara(object):
+    def setupUi(self, VCamara):
+        VCamara.setObjectName("VCamara")
+        VCamara.resize(620, 311)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(VCamara.sizePolicy().hasHeightForWidth())
+        VCamara.setSizePolicy(sizePolicy)
+        VCamara.setMinimumSize(QtCore.QSize(620, 311))
+        VCamara.setMaximumSize(QtCore.QSize(620, 311))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../../../PycharmProjects/SIPaF/images/SIPaF.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        VCamara.setWindowIcon(icon)
+        VCamara.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"font: 14pt \"Arial Rounded MT Bold\";\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.verticalLayout = QtWidgets.QVBoxLayout(VCamara)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.frame_principal = QtWidgets.QFrame(VCamara)
+        self.frame_principal.setStyleSheet("QPushButton{\n"
+"background-color: rgb(245, 245, 245);\n"
+"}")
+        self.frame_principal.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_principal.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_principal.setObjectName("frame_principal")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_principal)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(5)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.frame_etiquetas = QtWidgets.QFrame(self.frame_principal)
+        self.frame_etiquetas.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_etiquetas.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_etiquetas.setObjectName("frame_etiquetas")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame_etiquetas)
+        self.verticalLayout_2.setContentsMargins(1, 5, 1, 1)
+        self.verticalLayout_2.setSpacing(8)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.lbl_nombre = QtWidgets.QLabel(self.frame_etiquetas)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lbl_nombre.sizePolicy().hasHeightForWidth())
+        self.lbl_nombre.setSizePolicy(sizePolicy)
+        self.lbl_nombre.setObjectName("lbl_nombre")
+        self.verticalLayout_2.addWidget(self.lbl_nombre)
+        self.lbl_andho_sensor = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_andho_sensor.setObjectName("lbl_andho_sensor")
+        self.verticalLayout_2.addWidget(self.lbl_andho_sensor)
+        self.lbl_altura_sensor = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_altura_sensor.setObjectName("lbl_altura_sensor")
+        self.verticalLayout_2.addWidget(self.lbl_altura_sensor)
+        self.lbl_andho_pixeles = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_andho_pixeles.setObjectName("lbl_andho_pixeles")
+        self.verticalLayout_2.addWidget(self.lbl_andho_pixeles)
+        self.lbl_altura_pixeles = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_altura_pixeles.setObjectName("lbl_altura_pixeles")
+        self.verticalLayout_2.addWidget(self.lbl_altura_pixeles)
+        self.lbl_largo_focal = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_largo_focal.setObjectName("lbl_largo_focal")
+        self.verticalLayout_2.addWidget(self.lbl_largo_focal)
+        self.lbl_tipo_camara = QtWidgets.QLabel(self.frame_etiquetas)
+        self.lbl_tipo_camara.setObjectName("lbl_tipo_camara")
+        self.verticalLayout_2.addWidget(self.lbl_tipo_camara)
+        spacerItem = QtWidgets.QSpacerItem(23, 37, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem)
+        self.horizontalLayout.addWidget(self.frame_etiquetas)
+        self.frame_entradas = QtWidgets.QFrame(self.frame_principal)
+        self.frame_entradas.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_entradas.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_entradas.setObjectName("frame_entradas")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frame_entradas)
+        self.verticalLayout_3.setContentsMargins(1, 1, 1, 1)
+        self.verticalLayout_3.setSpacing(10)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.le_nombre = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_nombre.setObjectName("le_nombre")
+        self.verticalLayout_3.addWidget(self.le_nombre)
+        self.le_ancho_sensor = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_ancho_sensor.setObjectName("le_ancho_sensor")
+        self.verticalLayout_3.addWidget(self.le_ancho_sensor)
+        self.le_altura_sensor = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_altura_sensor.setObjectName("le_altura_sensor")
+        self.verticalLayout_3.addWidget(self.le_altura_sensor)
+        self.le_ancho_pixeles = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_ancho_pixeles.setObjectName("le_ancho_pixeles")
+        self.verticalLayout_3.addWidget(self.le_ancho_pixeles)
+        self.le_altura_pixeles = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_altura_pixeles.setObjectName("le_altura_pixeles")
+        self.verticalLayout_3.addWidget(self.le_altura_pixeles)
+        self.le_largo_focal = QtWidgets.QLineEdit(self.frame_entradas)
+        self.le_largo_focal.setObjectName("le_largo_focal")
+        self.verticalLayout_3.addWidget(self.le_largo_focal)
+        self.cb_tipo_camaras = QtWidgets.QComboBox(self.frame_entradas)
+        self.cb_tipo_camaras.setObjectName("cb_tipo_camaras")
+        self.verticalLayout_3.addWidget(self.cb_tipo_camaras)
+        self.frame_botones = QtWidgets.QFrame(self.frame_entradas)
+        self.frame_botones.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_botones.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_botones.setObjectName("frame_botones")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_botones)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, -1)
+        self.horizontalLayout_2.setSpacing(15)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.pb_guardar_camara = QtWidgets.QPushButton(self.frame_botones)
+        self.pb_guardar_camara.setObjectName("pb_guardar_camara")
+        self.horizontalLayout_2.addWidget(self.pb_guardar_camara)
+        self.pb_cancelar_camara = QtWidgets.QPushButton(self.frame_botones)
+        self.pb_cancelar_camara.setObjectName("pb_cancelar_camara")
+        self.horizontalLayout_2.addWidget(self.pb_cancelar_camara)
+        self.verticalLayout_3.addWidget(self.frame_botones)
+        self.horizontalLayout.addWidget(self.frame_entradas)
+        self.verticalLayout.addWidget(self.frame_principal)
+
+        self.retranslateUi(VCamara)
+        QtCore.QMetaObject.connectSlotsByName(VCamara)
+
+    def retranslateUi(self, VCamara):
+        _translate = QtCore.QCoreApplication.translate
+        VCamara.setWindowTitle(_translate("VCamara", "Propiedades de la Cámara"))
+        self.lbl_nombre.setText(_translate("VCamara", "Nombre:"))
+        self.lbl_andho_sensor.setText(_translate("VCamara", "Ancho del Sensor en mm:"))
+        self.lbl_altura_sensor.setText(_translate("VCamara", "Altura del Sensor en mm:"))
+        self.lbl_andho_pixeles.setText(_translate("VCamara", "Ancho en pixeles:"))
+        self.lbl_altura_pixeles.setText(_translate("VCamara", "Altura en pixeles:"))
+        self.lbl_largo_focal.setText(_translate("VCamara", "Largo focal en mm:"))
+        self.lbl_tipo_camara.setText(_translate("VCamara", "Tipo de la cámara:"))
+        self.pb_guardar_camara.setText(_translate("VCamara", "Guardar"))
+        self.pb_cancelar_camara.setText(_translate("VCamara", "Cancelar"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    VCamara = QtWidgets.QWidget()
+    ui = Ui_VCamara()
+    ui.setupUi(VCamara)
+    VCamara.show()
+    sys.exit(app.exec_())
+
