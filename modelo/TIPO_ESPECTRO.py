@@ -2,6 +2,6 @@
 from enum import Enum
 
 
-class SpectralType(Enum):
+class TIPO_ESPECTRO(Enum):
     RGB = 0
     TERMICA = 1

@@ -6,5 +6,6 @@ import sys
 if __name__ == '__main__':
     app = qtw.QApplication(sys.argv)
     ui = CEDT()
-    ui.showMaximized()
-    sys.exit(app.exec_())
+    if ui.CGEDT.mEDT is not None:
+        ui.showMaximized()
+        sys.exit(app.exec_())

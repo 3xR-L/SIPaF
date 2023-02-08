@@ -73,13 +73,26 @@ class Ui_VEDT(object):
         self.barra_tareas = QtWidgets.QFrame(self.frame_VEDT)
         self.barra_tareas.setMaximumSize(QtCore.QSize(16777215, 30))
         self.barra_tareas.setStyleSheet("QPushButton{\n"
-"    border-radius:10px;\n"
-"    background-color: rgb(240, 240, 240);\n"
+	"border-radius:10px;\n"
+	"background-color: rgb(240, 240, 240);\n"
 "}\n"
-"\n"
+"QPushButton:pressed{\n"
+	"background-color:  rgb(220, 220, 220);\n"
+	"border-radius:2px;\n"
+	"border-style: outset;\n"
+	"border: 0.5px solid;\n"
+	"border-top-color : black;\n" 
+    "border-left-color :black;\n"
+    "border-right-color :black;\n"
+    "border-bottom-color : black;\n"
+"}\n"
+
+"QPushButton:hover:!pressed{\n"
+	"background-color: white;\n"
+"}\n"
+
 "QFrame{\n"
-"    \n"
-"    background-color: rgb(240, 240, 240);\n"
+	"background-color: rgb(240, 240, 240);\n"
 "}")
         self.barra_tareas.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.barra_tareas.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -835,12 +848,12 @@ class Ui_VEDT(object):
         self.ayuda_ayuda.setText(_translate("VEDT", "Ayuda"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    VEDT = QtWidgets.QMainWindow()
-    ui = Ui_VEDT()
-    ui.setupUi(VEDT)
-    VEDT.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     VEDT = QtWidgets.QMainWindow()
+#     ui = Ui_VEDT()
+#     ui.setupUi(VEDT)
+#     VEDT.show()
+#     sys.exit(app.exec_())
 

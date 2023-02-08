@@ -1,6 +1,6 @@
 from typing import *
 
-import TIPO_ESPECTRO
+from modelo.TIPO_ESPECTRO import TIPO_ESPECTRO
 
 class Camara:
     def __init__(self, nombreCamara: AnyStr, anchoSensor: float, alturaSensor: float, anchoPixeles: int,
