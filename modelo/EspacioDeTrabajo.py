@@ -9,9 +9,8 @@ from typing import *
 class EspacioDeTrabajo():
     def __init__(self, nombreEDT: AnyStr, fechaMod: datetime, direccion: Path, correoElectronico=None):
         self.nombreEDT = nombreEDT
-        # datetime.strptime(fechaMod, '%d/%m/%Y %H:%M:%S')
         self.fechaModificacion = fechaMod
 
         #self.fechaModificacion: datetime = fechaMod
-        self.direccion: Path = direccion
-        self.correoElectronico: AnyStr = correoElectronico
+        self.direccion = direccion
+        self.correoElectronico = correoElectronico

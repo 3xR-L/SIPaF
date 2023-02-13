@@ -235,7 +235,7 @@ class Ui_VGestionarEDT(object):
         self.label_nombreEDT.setText(_translate("VGestionarEDT", "Nombre del espacio de trabajo: "))
         self.comboBox_EDT.setCurrentText(_translate("VGestionarEDT", "Seleccione espacio o cree uno nuevo"))
         #self.comboBox_EDT.setPlaceholderText(_translate("VGestionarEDT", "Only alphanumeric characters and underscores."))
-        self.pb_crear.setText(_translate("VGestionarEDT", "Crear"))
+        self.pb_crear.setText(_translate("VGestionarEDT", "Crear/Abrir"))
         self.pb_eliminar.setText(_translate("VGestionarEDT", "Eliminar"))
         self.pb_cancelar.setText(_translate("VGestionarEDT", "Cancelar"))
 

@@ -23,15 +23,26 @@ class CEDT(qtw.QMainWindow):
 
 
     def clicks(self):
-        pass
+        # Open VGestionarEDT when the action cambiar on the menu EDT if nuevo, guardar, eliminar or cambiar is clicked
+        # on the EDT menu
+        self.VEDT.EDT_nuevo.triggered.connect(self.openVCGestionarEDT)
+        self.VEDT.EDT_cambiar.triggered.connect(self.openVCGestionarEDT)
+        self.VEDT.EDT_eliminar.triggered.connect(self.openVCGestionarEDT)
 
     def loadProjects(self):
         # set the model for the tree view
         self.model = QFileSystemModel()
         self.model.setRootPath(QDir.currentPath())
         self.VEDT.vista_arbol_proyectos.setModel(self.model)
-        self.VEDT.vista_arbol_proyectos.setRootIndex(self.model.index(self.CGEDT.mEDT.direccion))
+        self.VEDT.vista_arbol_proyectos.setRootIndex(self.model.index(self.CGEDT.mEDT.direccion+'/'+self.CGEDT.mEDT.nombreEDT))
         self.VEDT.vista_arbol_proyectos.setSortingEnabled(True)
         self.VEDT.vista_arbol_proyectos.setColumnWidth(0, 120)
         self.VEDT.vista_arbol_proyectos.setColumnWidth(1, 80)
         self.VEDT.vista_arbol_proyectos.setColumnWidth(2, 80)
+
+    def openVCGestionarEDT(self):
+        last_model = self.CGEDT.mEDT
+        self.CGEDT.openVGEDT()
+        # check if the model has been changed
+        if last_model is not self.CGEDT.mEDT:
+            self.loadProjects()
