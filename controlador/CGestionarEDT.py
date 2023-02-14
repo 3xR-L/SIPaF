@@ -130,7 +130,6 @@ class CGestionarEDT(qtw.QDialog):
         msg.buttonClicked.connect(self.deleteEDT)
         msg.exec_()
 
-    ### probar ###
     def deleteEDT(self):
         # delete the EDT from SIPaF.EDT
         nombre = self.VGEDT.comboBox_EDT.currentText()
@@ -141,7 +140,6 @@ class CGestionarEDT(qtw.QDialog):
             with open('SIPaF.EDT', 'r+') as f:
                 lines = f
                 for line in lines:
-                    print(line)
                     if '<NombreEDT>'+nombre+'</NombreEDT>' in line:
                         newFile.pop()
                         next(lines)
@@ -167,7 +165,6 @@ class CGestionarEDT(qtw.QDialog):
     def updateComboBox(self):
         # update the combobox
         self.VGEDT.comboBox_EDT.clear()
-        #self.ui.comboBox_EDT.addItem('Seleccione espacio o cree uno nuevo')
         for edt in self.edts:
             self.VGEDT.comboBox_EDT.addItem(edt.nombreEDT)
 

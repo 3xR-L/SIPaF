@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_VDatosProyecto(object):
     def setupUi(self, VDatosProyecto):
         VDatosProyecto.setObjectName("VDatosProyecto")
@@ -21,7 +22,8 @@ class Ui_VDatosProyecto(object):
         VDatosProyecto.setMinimumSize(QtCore.QSize(735, 203))
         VDatosProyecto.setMaximumSize(QtCore.QSize(735, 203))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../PycharmProjects/SIPaF/images/SIPaF.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("images/SIPaF.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
         VDatosProyecto.setWindowIcon(icon)
         VDatosProyecto.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.horizontalLayout = QtWidgets.QHBoxLayout(VDatosProyecto)
@@ -29,11 +31,11 @@ class Ui_VDatosProyecto(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_VDatosProyecto = QtWidgets.QFrame(VDatosProyecto)
         self.frame_VDatosProyecto.setStyleSheet("font: 14pt \"Arial Rounded MT Bold\";\n"
-"\n"
-"QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"}\n"
-"")
+                                                "\n"
+                                                "QFrame{\n"
+                                                "    background-color: rgb(255, 255, 255);\n"
+                                                "}\n"
+                                                "")
         self.frame_VDatosProyecto.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_VDatosProyecto.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_VDatosProyecto.setObjectName("frame_VDatosProyecto")
@@ -50,11 +52,11 @@ class Ui_VDatosProyecto(object):
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName("verticalLayout")
         self.lbl_nombre_proyecto = QtWidgets.QLabel(self.frame_VDatosProyecto_etiquetas)
-        self.lbl_nombre_proyecto.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lbl_nombre_proyecto.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.lbl_nombre_proyecto.setObjectName("lbl_nombre_proyecto")
         self.verticalLayout.addWidget(self.lbl_nombre_proyecto)
         self.lbl_direccion_imagenes = QtWidgets.QLabel(self.frame_VDatosProyecto_etiquetas)
-        self.lbl_direccion_imagenes.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lbl_direccion_imagenes.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.lbl_direccion_imagenes.setObjectName("lbl_direccion_imagenes")
         self.verticalLayout.addWidget(self.lbl_direccion_imagenes)
         self.lbl_camaras_utilizadas = QtWidgets.QLabel(self.frame_VDatosProyecto_etiquetas)
@@ -108,7 +110,8 @@ class Ui_VDatosProyecto(object):
         self.pb_direccion.setStyleSheet("background-color: rgb(245, 245, 245);")
         self.pb_direccion.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../../PycharmProjects/SIPaF/images/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("images/folder.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pb_direccion.setIcon(icon1)
         self.pb_direccion.setObjectName("pb_direccion")
         self.horizontalLayout_5.addWidget(self.pb_direccion)
@@ -155,21 +158,20 @@ class Ui_VDatosProyecto(object):
         _translate = QtCore.QCoreApplication.translate
         VDatosProyecto.setWindowTitle(_translate("VDatosProyecto", "Datos del Proyecto"))
         self.lbl_nombre_proyecto.setText(_translate("VDatosProyecto", "Nombre del proyecto:"))
-        self.lbl_direccion_imagenes.setToolTip(_translate("VDatosProyecto", "Lugar donde se encuentran las imagenes a procesar."))
+        self.lbl_direccion_imagenes.setToolTip(
+            _translate("VDatosProyecto", "Lugar donde se encuentran las imagenes a procesar."))
         self.lbl_direccion_imagenes.setText(_translate("VDatosProyecto", "Dirección de las imagenes:"))
         self.lbl_camaras_utilizadas.setToolTip(_translate("VDatosProyecto", "Seleccionr las camaras utilizadas."))
         self.lbl_camaras_utilizadas.setText(_translate("VDatosProyecto", "Cámaras utilizadas:"))
-        self.pb_agregar_camara.setText(_translate("VDatosProyecto", "Agregar cámara"))
+        self.pb_agregar_camara.setText(_translate("VDatosProyecto", "Administrar cámaras"))
         self.pb_siguiente.setText(_translate("VDatosProyecto", "Siguiente"))
         self.pb_cancelar.setText(_translate("VDatosProyecto", "Cancelar"))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    VDatosProyecto = QtWidgets.QWidget()
-    ui = Ui_VDatosProyecto()
-    ui.setupUi(VDatosProyecto)
-    VDatosProyecto.show()
-    sys.exit(app.exec_())
-
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     VDatosProyecto = QtWidgets.QWidget()
+#     ui = Ui_VDatosProyecto()
+#     ui.setupUi(VDatosProyecto)
+#     VDatosProyecto.show()
+#     sys.exit(app.exec_())

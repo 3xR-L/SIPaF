@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_VCamara(object):
     def setupUi(self, VCamara):
         VCamara.setObjectName("VCamara")
+        VCamara.setWindowModality(QtCore.Qt.ApplicationModal)
         VCamara.resize(620, 311)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -20,7 +21,7 @@ class Ui_VCamara(object):
         VCamara.setMinimumSize(QtCore.QSize(620, 311))
         VCamara.setMaximumSize(QtCore.QSize(620, 311))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../PycharmProjects/SIPaF/images/SIPaF.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("images/SIPaF.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         VCamara.setWindowIcon(icon)
         VCamara.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "\n"
@@ -90,9 +91,10 @@ class Ui_VCamara(object):
         self.verticalLayout_3.setContentsMargins(1, 1, 1, 1)
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.le_nombre = QtWidgets.QLineEdit(self.frame_entradas)
-        self.le_nombre.setObjectName("le_nombre")
-        self.verticalLayout_3.addWidget(self.le_nombre)
+        self.cb_nombre_camara = QtWidgets.QComboBox(self.frame_entradas)
+        self.cb_nombre_camara.setObjectName("cb_nombre_camara")
+        self.cb_nombre_camara.setEditable(True)
+        self.verticalLayout_3.addWidget(self.cb_nombre_camara)
         self.le_ancho_sensor = QtWidgets.QLineEdit(self.frame_entradas)
         self.le_ancho_sensor.setObjectName("le_ancho_sensor")
         self.verticalLayout_3.addWidget(self.le_ancho_sensor)
@@ -122,6 +124,9 @@ class Ui_VCamara(object):
         self.pb_guardar_camara = QtWidgets.QPushButton(self.frame_botones)
         self.pb_guardar_camara.setObjectName("pb_guardar_camara")
         self.horizontalLayout_2.addWidget(self.pb_guardar_camara)
+        self.pb_eliminarar_camara = QtWidgets.QPushButton(self.frame_botones)
+        self.pb_eliminarar_camara.setObjectName("pb_eliminarar_camara")
+        self.horizontalLayout_2.addWidget(self.pb_eliminarar_camara)
         self.pb_cancelar_camara = QtWidgets.QPushButton(self.frame_botones)
         self.pb_cancelar_camara.setObjectName("pb_cancelar_camara")
         self.horizontalLayout_2.addWidget(self.pb_cancelar_camara)
@@ -135,7 +140,7 @@ class Ui_VCamara(object):
     def retranslateUi(self, VCamara):
         _translate = QtCore.QCoreApplication.translate
         VCamara.setWindowTitle(_translate("VCamara", "Propiedades de la Cámara"))
-        self.lbl_nombre.setText(_translate("VCamara", "Nombre:"))
+        self.lbl_nombre.setText(_translate("VCamara", "Nombre de la cámara:"))
         self.lbl_andho_sensor.setText(_translate("VCamara", "Ancho del Sensor en mm:"))
         self.lbl_altura_sensor.setText(_translate("VCamara", "Altura del Sensor en mm:"))
         self.lbl_andho_pixeles.setText(_translate("VCamara", "Ancho en pixeles:"))
@@ -143,15 +148,6 @@ class Ui_VCamara(object):
         self.lbl_largo_focal.setText(_translate("VCamara", "Largo focal en mm:"))
         self.lbl_tipo_camara.setText(_translate("VCamara", "Tipo de la cámara:"))
         self.pb_guardar_camara.setText(_translate("VCamara", "Guardar"))
+        self.pb_eliminarar_camara.setText(_translate("VCamara", "Eliminar"))
         self.pb_cancelar_camara.setText(_translate("VCamara", "Cancelar"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    VCamara = QtWidgets.QWidget()
-    ui = Ui_VCamara()
-    ui.setupUi(VCamara)
-    VCamara.show()
-    sys.exit(app.exec_())
 
