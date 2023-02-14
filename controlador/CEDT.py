@@ -7,6 +7,8 @@ from vista.VEDT import Ui_VEDT
 
 from PyQt5 import QtWidgets as qtw
 
+import os
+
 
 class CEDT(qtw.QMainWindow):
     def __init__(self):
@@ -20,6 +22,7 @@ class CEDT(qtw.QMainWindow):
             self.VEDT.setupUi(self)
             self.loadProjects()
             self.clicks()
+            self.proyNames = self.readProyNames()
             self.show()
 
     def clicks(self):
@@ -54,5 +57,14 @@ class CEDT(qtw.QMainWindow):
 
     def openVCProy(self):
         if self.CProy is None:
-            self.CProy = CProy()
+            self.CProy = CProy(self.proyNames)
         self.CProy.openVProy()
+
+    def readProyNames(self):
+        # read all files in the EDT directory with the extension .SIPaF
+        # and return a list with the names of the projects
+        projects = []
+        for file in os.listdir(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT):
+            if file.endswith('.SIPaF'):
+                projects.append(file)
+        return projects
