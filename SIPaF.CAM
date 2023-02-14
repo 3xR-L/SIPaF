@@ -1,9 +1,9 @@
 <CAMARA>
 	<NombreCamara>safwaerat</NombreCamara>
-	<AnchoSensor>456.5</AnchoSensor>
+	<AnchoSensor>500</AnchoSensor>
 	<AlturaSensor>456.1</AlturaSensor>
 	<AnchoPixeles>456.564</AnchoPixeles>
 	<AlturaPixeles>4678.78</AlturaPixeles>
 	<LargoFocal>4567</LargoFocal>
-	<TipoCamara>RGB</TipoCamara>
+	<TipoEspectro>RGB</TipoEspectro>
 </CAMARA>

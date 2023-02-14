@@ -8,6 +8,14 @@ from modelo.TIPO_ESPECTRO import TIPO_ESPECTRO
 class CCamara(qtw.QDialog):
     def __init__(self):
         super().__init__()
+        self.VCamara = None
+        try:
+            with open('SIPaF.CAM', 'r') as f:
+                self.fileCAM = f
+                self.camaras, self.tipos = self.fillCamaraData()
+        except FileNotFoundError:
+            self.fileCAM = None
+            self.camaras, self.tipos = self.fillCamaraData()
 
     def openVCamara(self):
         try:
@@ -15,8 +23,8 @@ class CCamara(qtw.QDialog):
                 self.VCamara = Ui_VCamara()
                 self.VCamara.setupUi(self)
                 self.fileCAM = f
-                self.camaras = []
-                self.fillCamaraData()
+                self.camaras, _ = self.fillCamaraData()
+                self.updateCamaraValues()
                 self.loadCamaraTypes()
                 self.clicks()
                 self.show()
@@ -38,13 +46,25 @@ class CCamara(qtw.QDialog):
 
     def fillCamaraData(self):
         # read the file line by line
-        self.fileCAM.seek(0)
-        for line in self.fileCAM:
-            if '<NombreCamara>' in line:
-                nombreCamara = line.split('<NombreCamara>')[1].split('</NombreCamara>')[0]
-                self.VCamara.cb_nombre_camara.addItem(nombreCamara)
-                self.camaras.append(nombreCamara)
-        self.updateCamaraValues()
+        camaras = []
+        tipos = []
+        if self.fileCAM is not None:
+            self.fileCAM.seek(0)
+            for line in self.fileCAM:
+                if '<NombreCamara>' in line:
+                    nombreCamara = line.split('<NombreCamara>')[1].split('</NombreCamara>')[0]
+                    if self.VCamara is not None:
+                        self.VCamara.cb_nombre_camara.addItem(nombreCamara)
+                    line = next(self.fileCAM)
+                    line = next(self.fileCAM)
+                    line = next(self.fileCAM)
+                    line = next(self.fileCAM)
+                    line = next(self.fileCAM)
+                    line = next(self.fileCAM)
+                    tipo_espectro = line.split('<TipoEspectro>')[1].split('</TipoEspectro>')[0]
+                    camaras.append(nombreCamara)
+                    tipos.append(tipo_espectro)
+        return camaras, tipos
 
     def updateCamaraValues(self):
         # get the data from the file
@@ -136,7 +156,7 @@ class CCamara(qtw.QDialog):
         self.fileCAM.write('\t<AnchoPixeles>' + ancho_pixeles + '</AnchoPixeles>\n')
         self.fileCAM.write('\t<AlturaPixeles>' + altura_pixeles + '</AlturaPixeles>\n')
         self.fileCAM.write('\t<LargoFocal>' + largo_focal + '</LargoFocal>\n')
-        self.fileCAM.write('\t<TipoCamara>' + tipo + '</TipoCamara>\n')
+        self.fileCAM.write('\t<TipoEspectro>' + tipo + '</TipoEspectro>\n')
         self.fileCAM.write("</CAMARA>\n")
 
     def deleteCamara(self, continuar=False):
