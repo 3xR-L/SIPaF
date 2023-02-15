@@ -56,9 +56,10 @@ class CEDT(qtw.QMainWindow):
             self.loadProjects()
 
     def openVCProy(self):
-        if self.CProy is None:
-            self.CProy = CProy(self.proyNames)
+        self.CProy = None
+        self.CProy = CProy(self.proyNames, self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT)
         self.CProy.openVProy()
+
 
     def readProyNames(self):
         # read all files in the EDT directory with the extension .SIPaF

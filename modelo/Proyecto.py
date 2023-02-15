@@ -21,7 +21,7 @@ class Proyecto:
     - Overlap horizontal entre las imágenes tomadas
     - Altura de vuelo en metros
     - Fecha de vuelo en formato datetime
-    - Lista de cámaras utilizadas
+    - Lista con los nombres de las cámaras utilizadas
     - Dirección de las imágenes tomadas
     - Checkpoint del vuelo
     - Lista de ortofotos generadas

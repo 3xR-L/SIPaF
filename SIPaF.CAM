@@ -7,3 +7,12 @@
 	<LargoFocal>4567</LargoFocal>
 	<TipoEspectro>RGB</TipoEspectro>
 </CAMARA>
+<CAMARA>
+	<NombreCamara>dos</NombreCamara>
+	<AnchoSensor>1</AnchoSensor>
+	<AlturaSensor>2</AlturaSensor>
+	<AnchoPixeles>12</AnchoPixeles>
+	<AlturaPixeles>21</AlturaPixeles>
+	<LargoFocal>23.1</LargoFocal>
+	<TipoEspectro>TERMICA</TipoEspectro>
+</CAMARA>

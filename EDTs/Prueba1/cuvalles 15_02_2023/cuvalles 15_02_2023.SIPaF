@@ -1,0 +1,34 @@
+<Proyecto>
+	<Nombre>cuvalles 15_02_2023</Nombre>
+	<AnchoCubierto>40</AnchoCubierto>
+	<LargoCubierto>60</LargoCubierto>
+	<OverlapHorizontal>10</OverlapHorizontal>
+	<OverlapVertical>60</OverlapVertical>
+	<AlturaVuelo>50</AlturaVuelo>
+	<Orientacion>Horizontal</Orientacion>
+	<FechaVuelo>01/01/2000 12:00 A. M.</FechaVuelo>
+	<Camara>
+		<NombreCamara>safwaerat</NombreCamara>
+		<AnchoSensor>500</AnchoSensor>
+		<AlturaSensor>456.1</AlturaSensor>
+		<AnchoPixeles>456.564</AnchoPixeles>
+		<AlturaPixeles>4678.78</AlturaPixeles>
+		<LargoFocal>4567</LargoFocal>
+		<TipoEspectro>RGB</TipoEspectro>
+	</Camara>
+	<Camara>
+		<NombreCamara>dos</NombreCamara>
+		<AnchoSensor>1</AnchoSensor>
+		<AlturaSensor>2</AlturaSensor>
+		<AnchoPixeles>12</AnchoPixeles>
+		<AlturaPixeles>21</AlturaPixeles>
+		<LargoFocal>23.1</LargoFocal>
+		<TipoEspectro>TERMICA</TipoEspectro>
+	</Camara>
+	<DireccionImagenes>C:/Users/rully/PycharmProjects/SIPaF/EDTs/Imagenes</DireccionImagenes>
+	<Checkpoint>None</Checkpoint>
+	<Reporte>
+	</Reporte>
+	<Ortofotos>
+	</Ortofotos>
+</Proyecto>
