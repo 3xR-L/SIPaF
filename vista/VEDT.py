@@ -204,28 +204,28 @@ class Ui_VEDT(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setSpacing(3)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.texto_buscar = QtWidgets.QLineEdit(self.frame_buscar)
+        self.le_buscar = QtWidgets.QLineEdit(self.frame_buscar)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.texto_buscar.sizePolicy().hasHeightForWidth())
-        self.texto_buscar.setSizePolicy(sizePolicy)
-        self.texto_buscar.setMaximumSize(QtCore.QSize(16777215, 25))
+        sizePolicy.setHeightForWidth(self.le_buscar.sizePolicy().hasHeightForWidth())
+        self.le_buscar.setSizePolicy(sizePolicy)
+        self.le_buscar.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.texto_buscar.setFont(font)
-        self.texto_buscar.setToolTipDuration(-1)
-        self.texto_buscar.setAutoFillBackground(False)
-        self.texto_buscar.setStyleSheet("border-color: rgb(0, 0, 0);\n"
+        self.le_buscar.setFont(font)
+        self.le_buscar.setToolTipDuration(-1)
+        self.le_buscar.setAutoFillBackground(False)
+        self.le_buscar.setStyleSheet("border-color: rgb(0, 0, 0);\n"
 "background-color: rgb(253, 253, 253);")
-        self.texto_buscar.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.texto_buscar.setInputMask("")
-        self.texto_buscar.setText("")
-        self.texto_buscar.setMaxLength(35)
-        self.texto_buscar.setFrame(True)
-        self.texto_buscar.setClearButtonEnabled(True)
-        self.texto_buscar.setObjectName("texto_buscar")
-        self.horizontalLayout_5.addWidget(self.texto_buscar)
+        self.le_buscar.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.le_buscar.setInputMask("")
+        self.le_buscar.setText("")
+        self.le_buscar.setMaxLength(35)
+        self.le_buscar.setFrame(True)
+        self.le_buscar.setClearButtonEnabled(True)
+        self.le_buscar.setObjectName("texto_buscar")
+        self.horizontalLayout_5.addWidget(self.le_buscar)
         self.pb_buscar = QtWidgets.QPushButton(self.frame_buscar)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -234,8 +234,20 @@ class Ui_VEDT(object):
         self.pb_buscar.setSizePolicy(sizePolicy)
         self.pb_buscar.setMinimumSize(QtCore.QSize(16, 16))
         self.pb_buscar.setMaximumSize(QtCore.QSize(30, 25))
-        self.pb_buscar.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"")
+        self.pb_buscar.setStyleSheet("""QPushButton:pressed{
+	background-color:  rgb(220, 220, 220);
+	border-radius:2px;
+	border-style: outset;
+	border: 0.5px solid;
+	border-top-color : black; 
+    border-left-color :black;
+    border-right-color :black;
+    border-bottom-color : black;
+}
+
+QPushButton:hover:!pressed{
+	background-color: white;
+}""")
         self.pb_buscar.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("images/search.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -261,6 +273,9 @@ class Ui_VEDT(object):
         self.vista_arbol_proyectos.setLineWidth(1)
         self.vista_arbol_proyectos.setMidLineWidth(0)
         self.vista_arbol_proyectos.setObjectName("vista_arbol_proyectos")
+        # do not show the modify the header columns
+        self.vista_arbol_proyectos.header().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+
         self.verticalLayout_3.addWidget(self.vista_arbol_proyectos)
         self.verticalLayout_2.addWidget(self.frame_arbol_proyectos)
         self.horizontalLayout_4.addWidget(self.frame_proyectos_EDT)
@@ -716,6 +731,9 @@ class Ui_VEDT(object):
         self.actionGuardar.setObjectName("actionGuardar")
         self.actionGuardar_como = QtWidgets.QAction(VEDT)
         self.actionGuardar_como.setObjectName("actionGuardar_como")
+        self.actionEliminar = QtWidgets.QAction(VEDT)
+        self.proyecto_eliminar = QtWidgets.QAction(VEDT)
+        self.proyecto_eliminar.setObjectName("proyecto_eliminar")
         self.actionSalir = QtWidgets.QAction(VEDT)
         self.actionSalir.setObjectName("actionSalir")
         self.actionEstablecer_correo = QtWidgets.QAction(VEDT)
@@ -759,6 +777,7 @@ class Ui_VEDT(object):
         self.menuProyecto.addAction(self.proyecto_abrir)
         self.menuProyecto.addAction(self.proyecto_guardar)
         self.menuProyecto.addAction(self.proyecto_guardar_como)
+        self.menuProyecto.addAction(self.proyecto_eliminar)
         self.menuProyecto.addSeparator()
         self.menuProyecto.addAction(self.proyecto_iniciar)
         self.menuProyecto.addAction(self.proyecto_propiedades)
@@ -798,8 +817,8 @@ class Ui_VEDT(object):
         self.pb_iniciar_proceso.setToolTip(_translate("VEDT", "Iniciar el proyecto"))
         self.pb_imprimir.setToolTip(_translate("VEDT", "Imprimir reporte"))
         self.pb_comparar.setToolTip(_translate("VEDT", "Comparar reportes"))
-        self.texto_buscar.setToolTip(_translate("VEDT", "Ingresar nombre de archivo"))
-        self.texto_buscar.setPlaceholderText(_translate("VEDT", " Buscar...."))
+        self.le_buscar.setToolTip(_translate("VEDT", "Ingresar nombre de archivo"))
+        self.le_buscar.setPlaceholderText(_translate("VEDT", " Buscar...."))
         self.pb_buscar.setToolTip(_translate("VEDT", "Buscar en EDT"))
         self.lbl_inicio.setText(_translate("VEDT", "Bienvenido, inicie o abra un proyecto."))
         self.tab_EDT.setTabText(self.tab_EDT.indexOf(self.inicio), _translate("VEDT", "Inicio"))
@@ -834,6 +853,7 @@ class Ui_VEDT(object):
         self.reporte_imprimir.setText(_translate("VEDT", "Imprimir"))
         self.reporte_compartir.setText(_translate("VEDT", "Compartir"))
         self.proyecto_nuevo.setText(_translate("VEDT", "Nuevo"))
+        self.proyecto_eliminar.setText(_translate("VEDT", "Eliminar"))
         self.proyecto_iniciar.setText(_translate("VEDT", "Iniciar"))
         self.proyecto_propiedades.setText(_translate("VEDT", "Propiedades"))
         self.EDT_establecer_correo.setText(_translate("VEDT", "Establecer correo"))

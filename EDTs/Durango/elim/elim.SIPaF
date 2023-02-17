@@ -1,11 +1,11 @@
 <Proyecto>
-	<Nombre>cuvalles 15_02_2023</Nombre>
-	<AnchoCubierto>40</AnchoCubierto>
-	<LargoCubierto>60</LargoCubierto>
-	<OverlapHorizontal>10</OverlapHorizontal>
+	<Nombre>elim</Nombre>
+	<AnchoCubierto>60</AnchoCubierto>
+	<LargoCubierto>80</LargoCubierto>
+	<OverlapHorizontal>20</OverlapHorizontal>
 	<OverlapVertical>60</OverlapVertical>
-	<AlturaVuelo>50</AlturaVuelo>
-	<Orientacion>Horizontal</Orientacion>
+	<AlturaVuelo>60</AlturaVuelo>
+	<Orientacion>Vertical</Orientacion>
 	<FechaVuelo>01/01/2000 12:00 A. M.</FechaVuelo>
 	<Camara>
 		<NombreCamara>safwaerat</NombreCamara>

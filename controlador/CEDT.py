@@ -5,10 +5,11 @@ from controlador.CProy import CProy
 from modelo.EspacioDeTrabajo import EspacioDeTrabajo
 from vista.VEDT import Ui_VEDT
 
-from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtWidgets as qtw, QtGui
 
 import os
-
+from shutil import rmtree
+import PyQt5.QtGui as qtg
 
 class CEDT(qtw.QMainWindow):
     def __init__(self):
@@ -35,6 +36,10 @@ class CEDT(qtw.QMainWindow):
         # Gestionar proyectos
         self.VEDT.proyecto_nuevo.triggered.connect(self.openVCProy)
         self.VEDT.pb_crear_proyecto.clicked.connect(self.openVCProy)
+        self.VEDT.proyecto_eliminar.triggered.connect(self.eliminateProy)
+
+        # search file on EDT tree view
+        self.VEDT.pb_buscar.clicked.connect(self.searchFile)
 
     def loadProjects(self):
         # set the model for the tree view
@@ -65,7 +70,69 @@ class CEDT(qtw.QMainWindow):
         # read all files in the EDT directory with the extension .SIPaF
         # and return a list with the names of the projects
         projects = []
+        print(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT)
         for file in os.listdir(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT):
-            if file.endswith('.SIPaF'):
-                projects.append(file)
+            projects.append(file)
         return projects
+
+    def searchFile(self):
+        # search for a file name in the EDT directory
+        # show it in the tree view
+        file = self.VEDT.le_buscar.text()
+        if file != '':
+            for root, dirs, files in os.walk(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT ):
+                # check if the text is within a file name or a directory name
+                # even though it is not case sensitive
+                # lowercase all the files and directories
+                # even though it does not completely mathch the file name
+                files = [f.lower() for f in files]
+                dirs = [d.lower() for d in dirs]
+                file = file.lower()
+                for i in range(len(files)):
+                    if file in files[i]:
+                        # get the index of the file
+                        index = self.model.index(root + '/' + files[i])
+                        # select the file
+                        self.VEDT.vista_arbol_proyectos.setCurrentIndex(index)
+                        self.VEDT.vista_arbol_proyectos.scrollTo(index)
+                        break
+                for i in range(len(dirs)):
+                    if file in dirs[i]:
+                        # get the index of the file
+                        index = self.model.index(root + '/' + dirs[i])
+                        # select the file
+                        self.VEDT.vista_arbol_proyectos.setCurrentIndex(index)
+                        self.VEDT.vista_arbol_proyectos.scrollTo(index)
+                        break
+
+    def eliminateProy(self):
+        # eliminate a project from the EDT
+        # delete the project folder selected in the tree view
+        # update the list of projects
+        # update the tree view
+        index = self.VEDT.vista_arbol_proyectos.currentIndex()
+        name = self.model.fileName(index)
+        print(name)
+        if index.isValid():
+            print(self.CGEDT.mEDT.nombreEDT)
+            if name != self.CGEDT.mEDT.nombreEDT and name in self.proyNames:
+                # eliminate the project folder from the EDT
+                try:
+                    # show a message box to confirm the elimination
+                    msg = qtw.QMessageBox()
+                    msg.setIcon(qtw.QMessageBox.Warning)
+                    msg.setText("¿Está seguro que desea eliminar todo el proyecto?")
+                    msg.setWindowTitle("Eliminar proyecto")
+                    msg.setStandardButtons(qtw.QMessageBox.Ok | qtw.QMessageBox.Cancel)
+                    # set icon for the message window
+                    msg.setWindowIcon(qtg.QIcon("images/SIPaF.png"))
+                    retval = msg.exec_()
+
+                    if retval == qtw.QMessageBox.Ok:
+                        rmtree(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT + '/' + name)
+                except Exception as e:
+                    print(e)
+                self.proyNames = self.readProyNames()
+                self.loadProjects()
+        else:
+            print('No file selected')

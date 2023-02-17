@@ -16,3 +16,21 @@
 	<LargoFocal>23.1</LargoFocal>
 	<TipoEspectro>TERMICA</TipoEspectro>
 </CAMARA>
+<CAMARA>
+	<NombreCamara>zenmusext2</NombreCamara>
+	<AnchoSensor>20</AnchoSensor>
+	<AlturaSensor>15</AlturaSensor>
+	<AnchoPixeles>300</AnchoPixeles>
+	<AlturaPixeles>400</AlturaPixeles>
+	<LargoFocal>10</LargoFocal>
+	<TipoEspectro>RGB</TipoEspectro>
+</CAMARA>
+<CAMARA>
+	<NombreCamara>zenmusext2_termica</NombreCamara>
+	<AnchoSensor>5</AnchoSensor>
+	<AlturaSensor>7</AlturaSensor>
+	<AnchoPixeles>600</AnchoPixeles>
+	<AlturaPixeles>520</AlturaPixeles>
+	<LargoFocal>10</LargoFocal>
+	<TipoEspectro>TERMICA</TipoEspectro>
+</CAMARA>

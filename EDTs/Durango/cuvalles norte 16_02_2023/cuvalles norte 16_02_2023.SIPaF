@@ -1,0 +1,34 @@
+<Proyecto>
+	<Nombre>cuvalles norte 16_02_2023</Nombre>
+	<AnchoCubierto>100</AnchoCubierto>
+	<LargoCubierto>200</LargoCubierto>
+	<OverlapHorizontal>70</OverlapHorizontal>
+	<OverlapVertical>20</OverlapVertical>
+	<AlturaVuelo>50</AlturaVuelo>
+	<Orientacion>Horizontal</Orientacion>
+	<FechaVuelo>01/01/2000 12:00 A. M.</FechaVuelo>
+	<Camara>
+		<NombreCamara>zenmusext2</NombreCamara>
+		<AnchoSensor>20</AnchoSensor>
+		<AlturaSensor>15</AlturaSensor>
+		<AnchoPixeles>300</AnchoPixeles>
+		<AlturaPixeles>400</AlturaPixeles>
+		<LargoFocal>10</LargoFocal>
+		<TipoEspectro>RGB</TipoEspectro>
+	</Camara>
+	<Camara>
+		<NombreCamara>zenmusext2_termica</NombreCamara>
+		<AnchoSensor>5</AnchoSensor>
+		<AlturaSensor>7</AlturaSensor>
+		<AnchoPixeles>600</AnchoPixeles>
+		<AlturaPixeles>520</AlturaPixeles>
+		<LargoFocal>10</LargoFocal>
+		<TipoEspectro>TERMICA</TipoEspectro>
+	</Camara>
+	<DireccionImagenes>C:/Users/rully/PycharmProjects/SIPaF/EDTs/Imagenes</DireccionImagenes>
+	<Checkpoint>None</Checkpoint>
+	<Reporte>
+	</Reporte>
+	<Ortofotos>
+	</Ortofotos>
+</Proyecto>
