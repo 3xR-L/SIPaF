@@ -6,12 +6,12 @@ class Camara:
     '''
     Clase que representa una cámara para el archivo SIPaF.CAM
     <CAMARA>
-        <NombreCamara>safwaerat</NombreCamara>
-        <AnchoSensor>500</AnchoSensor>
-        <AlturaSensor>456.1</AlturaSensor>
-        <AnchoPixeles>456.564</AnchoPixeles>
-        <AlturaPixeles>4678.78</AlturaPixeles>
-        <LargoFocal>4567</LargoFocal>
+        <NombreCamara>ZenmuseXT2</NombreCamara>
+        <AnchoSensor>7.4 (mm)</AnchoSensor>
+        <AlturaSensor>5.55 (mm)</AlturaSensor>
+        <AnchoPixeles>4000 (pixeles)</AnchoPixeles>
+        <AlturaPixeles>3000 (pixeles)</AlturaPixeles>
+        <LargoFocal>8 (mm)</LargoFocal>
         <TipoEspectro>RGB</TipoEspectro>
     </CAMARA>
     '''

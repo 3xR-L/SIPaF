@@ -2,6 +2,7 @@ from PyQt5.QtCore import QDir
 from PyQt5.QtWidgets import QFileSystemModel
 from controlador.CGestionarEDT import CGestionarEDT
 from controlador.CProy import CProy
+from controlador.COrtofoto import COrtofoto
 from modelo.EspacioDeTrabajo import EspacioDeTrabajo
 from vista.VEDT import Ui_VEDT
 
@@ -37,6 +38,7 @@ class CEDT(qtw.QMainWindow):
         self.VEDT.proyecto_nuevo.triggered.connect(self.openVCProy)
         self.VEDT.pb_crear_proyecto.clicked.connect(self.openVCProy)
         self.VEDT.proyecto_eliminar.triggered.connect(self.eliminateProy)
+        self.VEDT.pb_iniciar_proceso.clicked.connect(self.crearCOrtofoto)
 
         # search file on EDT tree view
         self.VEDT.pb_buscar.clicked.connect(self.searchFile)
@@ -136,3 +138,11 @@ class CEDT(qtw.QMainWindow):
                 self.loadProjects()
         else:
             print('No file selected')
+
+    def crearCOrtofoto(self):
+        # create a new orthophoto
+        # open a new window to select the parameters
+        # create the orthophoto
+        if self.CProy is not None:
+            self.COrtof = None
+            self.COrtof = COrtofoto(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT )
