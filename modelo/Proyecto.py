@@ -1,13 +1,11 @@
-import Camara
-import DIRECCION_VUELO
-
-import Ortofoto
-import Reporte
+from modelo import DIRECCION_VUELO
+from modelo import Camara
+from modelo import Ortofoto
+from modelo import Reporte
 
 from pathlib import Path
 from typing import *
 import datetime
-
 
 
 class Proyecto:
@@ -28,18 +26,17 @@ class Proyecto:
     - Reporte del vuelo
     """
 
-    def __init__(self, nombreProyecto: AnyStr, anchoCubierto: int, largoCubierto: int, overlapVertical: int,
-                 overlapHorizontal: int, alturaVuelo: int, direccionVuelo: DIRECCION_VUELO, fechaVuelo: datetime,
-                 Camaras: list[Camara], direccionImagenes: Path, checkpoint: int = 0, Ortofotos: list[Ortofoto] = [],
-                 Reporte: Reporte = None):
-
+    def __init__(self, nombreProyecto: AnyStr, anchoCubierto: int, largoCubierto: int, overlapHorizontal: int,
+                 overlapVertical: int, alturaVuelo: int, orientacion: DIRECCION_VUELO,
+                 fechaVuelo: datetime, Camaras: list[Camara], direccionImagenes: str, checkpoint: int = 0,
+                 Ortofotos: list[Ortofoto] = [], Reporte: Reporte = None):
         self.nombreProyecto = nombreProyecto
         self.anchoCubierto = anchoCubierto
         self.largoCubierto = largoCubierto
         self.overlapVertical = overlapVertical
         self.overlapHorizontal = overlapHorizontal
         self.alturaVuelo = alturaVuelo
-        self.direccionVuelo = direccionVuelo
+        self.orientacion = orientacion
         self.fechaVuelo = fechaVuelo
         self.Camaras = Camaras
         self.direccionImagenes = direccionImagenes

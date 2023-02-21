@@ -2,6 +2,7 @@ from PyQt5.QtCore import QDir
 from PyQt5.QtWidgets import QFileSystemModel
 from controlador.CGestionarEDT import CGestionarEDT
 from controlador.CProy import CProy
+from controlador.CProy import readProyData
 from controlador.COrtofoto import COrtofoto
 from modelo.EspacioDeTrabajo import EspacioDeTrabajo
 from vista.VEDT import Ui_VEDT
@@ -12,10 +13,12 @@ import os
 from shutil import rmtree
 import PyQt5.QtGui as qtg
 
+
 class CEDT(qtw.QMainWindow):
     def __init__(self):
         self.CGEDT = CGestionarEDT()
         self.CProy = None
+        self.Proy = None
         if self.CGEDT.mEDT is None:
             pass
         else:
@@ -39,6 +42,7 @@ class CEDT(qtw.QMainWindow):
         self.VEDT.pb_crear_proyecto.clicked.connect(self.openVCProy)
         self.VEDT.proyecto_eliminar.triggered.connect(self.eliminateProy)
         self.VEDT.pb_iniciar_proceso.clicked.connect(self.crearCOrtofoto)
+        self.VEDT.vista_arbol_proyectos.doubleClicked.connect(self.openProy)
 
         # search file on EDT tree view
         self.VEDT.pb_buscar.clicked.connect(self.searchFile)
@@ -67,7 +71,6 @@ class CEDT(qtw.QMainWindow):
         self.CProy = CProy(self.proyNames, self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT)
         self.CProy.openVProy()
 
-
     def readProyNames(self):
         # read all files in the EDT directory with the extension .SIPaF
         # and return a list with the names of the projects
@@ -82,7 +85,7 @@ class CEDT(qtw.QMainWindow):
         # show it in the tree view
         file = self.VEDT.le_buscar.text()
         if file != '':
-            for root, dirs, files in os.walk(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT ):
+            for root, dirs, files in os.walk(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT):
                 # check if the text is within a file name or a directory name
                 # even though it is not case sensitive
                 # lowercase all the files and directories
@@ -114,9 +117,7 @@ class CEDT(qtw.QMainWindow):
         # update the tree view
         index = self.VEDT.vista_arbol_proyectos.currentIndex()
         name = self.model.fileName(index)
-        print(name)
         if index.isValid():
-            print(self.CGEDT.mEDT.nombreEDT)
             if name != self.CGEDT.mEDT.nombreEDT and name in self.proyNames:
                 # eliminate the project folder from the EDT
                 try:
@@ -143,6 +144,16 @@ class CEDT(qtw.QMainWindow):
         # create a new orthophoto
         # open a new window to select the parameters
         # create the orthophoto
-        if self.CProy is not None:
+        if self.Proy is not None:
             self.COrtof = None
-            self.COrtof = COrtofoto(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT )
+            self.COrtof = COrtofoto(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT + '/' + self.Proy.nombreProyecto)
+            self.COrtof.preprocesarImagenes(self.Proy.direccionImagenes, self.Proy.Camaras, self.Proy.alturaVuelo)
+
+    def openProy(self):
+        # open a project
+        # open a new window to select the parameters
+        # create the orthophoto
+        index = self.VEDT.vista_arbol_proyectos.currentIndex()
+        name = self.model.fileName(index)
+        if name.endswith(".SIPaF"):
+            self.Proy = readProyData(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT + '/', name)

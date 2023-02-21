@@ -4,29 +4,29 @@
 	<LargoCubierto>80</LargoCubierto>
 	<OverlapHorizontal>20</OverlapHorizontal>
 	<OverlapVertical>60</OverlapVertical>
-	<AlturaVuelo>60</AlturaVuelo>
+	<AlturaVuelo>20</AlturaVuelo>
 	<Orientacion>Vertical</Orientacion>
 	<FechaVuelo>01/01/2000 12:00 A. M.</FechaVuelo>
 	<Camara>
-		<NombreCamara>safwaerat</NombreCamara>
-		<AnchoSensor>500</AnchoSensor>
-		<AlturaSensor>456.1</AlturaSensor>
-		<AnchoPixeles>456.564</AnchoPixeles>
-		<AlturaPixeles>4678.78</AlturaPixeles>
-		<LargoFocal>4567</LargoFocal>
+		<NombreCamara>Zenmuse XT2</NombreCamara>
+		<AnchoSensor>7.4</AnchoSensor>
+		<AlturaSensor>5.55</AlturaSensor>
+		<AnchoPixeles>4000</AnchoPixeles>
+		<AlturaPixeles>3000</AlturaPixeles>
+		<LargoFocal>8</LargoFocal>
 		<TipoEspectro>RGB</TipoEspectro>
 	</Camara>
 	<Camara>
-		<NombreCamara>dos</NombreCamara>
-		<AnchoSensor>1</AnchoSensor>
-		<AlturaSensor>2</AlturaSensor>
-		<AnchoPixeles>12</AnchoPixeles>
-		<AlturaPixeles>21</AlturaPixeles>
-		<LargoFocal>23.1</LargoFocal>
+		<NombreCamara>Zenmuse XT2 Termica</NombreCamara>
+		<AnchoSensor>10.88</AnchoSensor>
+		<AlturaSensor>8.7</AlturaSensor>
+		<AnchoPixeles>640</AnchoPixeles>
+		<AlturaPixeles>512</AlturaPixeles>
+		<LargoFocal>19</LargoFocal>
 		<TipoEspectro>TERMICA</TipoEspectro>
 	</Camara>
 	<DireccionImagenes>C:/Users/rully/PycharmProjects/SIPaF/EDTs/Imagenes</DireccionImagenes>
-	<Checkpoint>None</Checkpoint>
+	<Checkpoint>0</Checkpoint>
 	<Reporte>
 	</Reporte>
 	<Ortofotos>

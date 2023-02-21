@@ -137,8 +137,8 @@ class CCamara(qtw.QDialog):
         try:
             float(ancho_sensor)
             float(altura_sensor)
-            float(ancho_pixeles)
-            float(altura_pixeles)
+            int(ancho_pixeles)
+            int(altura_pixeles)
             float(largo_focal)
         except ValueError:
             return False

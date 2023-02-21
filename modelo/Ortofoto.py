@@ -11,5 +11,6 @@ class Ortofoto:
     def __init__(self, tamanoOrtofoto: list, Ortofoto: list, tipo: TIPO_ESPECTRO):
         self.tamanoOrtofoto = tamanoOrtofoto
         self._cantidadIma = None
-        self.Ortofoto = Ortofoto
+        self.ortofoto = list()
         self.tipo = tipo
+

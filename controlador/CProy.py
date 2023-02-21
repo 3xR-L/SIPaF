@@ -3,12 +3,71 @@
 from pathlib import Path
 from typing import AnyStr, List
 
+from modelo.TIPO_ESPECTRO import TIPO_ESPECTRO
 from modelo.Camara import Camara
+from modelo.Proyecto import Proyecto
 from modelo.DIRECCION_VUELO import DIRECCION_VUELO
 from vista.VDatosProyecto import Ui_VDatosProyecto
 from vista.VDatosVuelos import Ui_VDatosVuelo
 from controlador.CCamara import CCamara
 from PyQt5 import QtWidgets as qtw
+
+
+def readProyData(dirProject, name):
+    # read name.SIPaF file and get the data of the project selected to return a project object
+    # take out the .SIPaF from the name
+    with open(dirProject + name.split('.SIPaF')[0] + '/' + name, 'r+') as file:
+        # read the file
+        for line in file:
+            if "<Nombre>"+name.split('.SIPaF')[0]+"</Nombre>" in line:
+                nombreProyecto = name.split('.SIPaF')[0]
+                line = next(file)
+                anchoCubierto = int(line.split('<AnchoCubierto>')[1].split('</AnchoCubierto>')[0])
+                line = next(file)
+                largoCubierto = int(line.split('<LargoCubierto>')[1].split('</LargoCubierto>')[0])
+                line = next(file)
+                overlapHorizontal = int(line.split('<OverlapHorizontal>')[1].split('</OverlapHorizontal>')[0])
+                line = next(file)
+                overlapVertical = int(line.split('<OverlapVertical>')[1].split('</OverlapVertical>')[0])
+                line = next(file)
+                alturaVuelo = int(line.split('<AlturaVuelo>')[1].split('</AlturaVuelo>')[0])
+                line = next(file)
+                orientacion = DIRECCION_VUELO[line.split('<Orientacion>')[1].split('</Orientacion>')[0].upper()]
+                line = next(file)
+                fechaVuelo = line.split('<FechaVuelo>')[1].split('</FechaVuelo>')[0]
+                # get camaras
+                line = next(file)
+                camaras = []
+                for _ in range(2):
+                    if '<Camara>' in line:
+                        line = next(file)
+                        nombreCamara = line.split('<NombreCamara>')[1].split('</NombreCamara>')[0]
+                        line = next(file)
+                        anchoSensor = float(line.split('<AnchoSensor>')[1].split('</AnchoSensor>')[0])
+                        line = next(file)
+                        alturaSensor = float(line.split('<AlturaSensor>')[1].split('</AlturaSensor>')[0])
+                        line = next(file)
+                        anchoPixeles = int(line.split('<AnchoPixeles>')[1].split('</AnchoPixeles>')[0])
+                        line = next(file)
+                        alturaPixeles = int(line.split('<AlturaPixeles>')[1].split('</AlturaPixeles>')[0])
+                        line = next(file)
+                        largoFocal = float(line.split('<LargoFocal>')[1].split('</LargoFocal>')[0])
+                        line = next(file)
+                        tipoEspectro = TIPO_ESPECTRO[line.split('<TipoEspectro>')[1].split('</TipoEspectro>')[0]]
+                        line = next(file)
+                        camaras.append(Camara(nombreCamara, anchoSensor, alturaSensor, anchoPixeles, alturaPixeles, largoFocal, tipoEspectro))
+                        line = next(file)
+                # get direccionImagenes
+                direccionImagenes = line.split('<DireccionImagenes>')[1].split('</DireccionImagenes>')[0]
+                line = next(file)
+                # get checkpoint
+                checkpoint = int(line.split('<Checkpoint>')[1].split('</Checkpoint>')[0])
+                line = next(file)
+                # get Reporte
+                # get Ortofoto
+        # return the project object
+        return Proyecto(nombreProyecto, anchoCubierto, largoCubierto, overlapHorizontal, overlapVertical, alturaVuelo,
+                        orientacion, fechaVuelo, camaras, direccionImagenes, checkpoint)
 
 
 class CProy(qtw.QWidget):
@@ -28,7 +87,7 @@ class CProy(qtw.QWidget):
         self.fechaVuelo = None
         self.Camaras = None
         self.direccionImagenes = None
-        self.checkpoint = None
+        self.checkpoint = 0
 
         self.CVDatosVuelo = None
 
@@ -135,7 +194,8 @@ class CProy(qtw.QWidget):
             self.nombreProyecto = self.VProy.le_nombre_proyecto.text()
             self.direccionImagenes = self.VProy.le_direccion_imagenes.text()
             camaraRGB = self.getCamaraData(self.VProy.cb_camara1.currentText())
-            camaraRGB = Camara(camaraRGB[0], camaraRGB[1], camaraRGB[2], camaraRGB[3], camaraRGB[4], camaraRGB[5], camaraRGB[6])
+            camaraRGB = Camara(camaraRGB[0], camaraRGB[1], camaraRGB[2], camaraRGB[3], camaraRGB[4], camaraRGB[5],
+                               camaraRGB[6])
             camaraIR = self.getCamaraData(self.VProy.cb_camara2.currentText())
             camaraIR = Camara(camaraIR[0], camaraIR[1], camaraIR[2], camaraIR[3], camaraIR[4], camaraIR[5], camaraIR[6])
             self.Camaras = [camaraRGB, camaraIR]
@@ -198,8 +258,9 @@ class CProy(qtw.QWidget):
                     return nombreCamara, ancho_sensor, altura_sensor, ancho_pixeles, altura_pixeles, largo_focal, tipo
         return None
 
-class CVDatosVuelos(qtw.QWidget):
 
+
+class CVDatosVuelos(qtw.QWidget):
     def __init__(self):
         super().__init__()
         self.VDatosVuelos = Ui_VDatosVuelo()
