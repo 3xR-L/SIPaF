@@ -47,6 +47,9 @@ class CEDT(qtw.QMainWindow):
         # search file on EDT tree view
         self.VEDT.pb_buscar.clicked.connect(self.searchFile)
 
+        # Gestionar reportes
+        self.VEDT.reporte_eliminar.triggered.connect(self.deleteRepor)
+
     def loadProjects(self):
         # set the model for the tree view
         self.model = QFileSystemModel()
@@ -147,13 +150,35 @@ class CEDT(qtw.QMainWindow):
         if self.Proy is not None:
             self.COrtof = None
             self.COrtof = COrtofoto(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT + '/' + self.Proy.nombreProyecto)
-            self.COrtof.preprocesarImagenes(self.Proy.direccionImagenes, self.Proy.Camaras, self.Proy.alturaVuelo)
+            self.COrtof.preprocesarImagenes(self.Proy.direccionImagenes, self.Proy.Camaras, self.Proy.alturaVuelo, \
+                                            self.Proy.overlapVertical, self.Proy.overlapHorizontal)
 
     def openProy(self):
-        # open a project
-        # open a new window to select the parameters
-        # create the orthophoto
+        # load the project selected in the tree view or open the file on the default program
+
         index = self.VEDT.vista_arbol_proyectos.currentIndex()
         name = self.model.fileName(index)
         if name.endswith(".SIPaF"):
             self.Proy = readProyData(self.CGEDT.mEDT.direccion + '/' + self.CGEDT.mEDT.nombreEDT + '/', name)
+        else:
+            if index.isValid():
+                # open the file on the default program
+                os.startfile(self.model.filePath(index))
+
+    def deleteRepor(self):
+        # eliminate if exists the report of the project
+        # update the list of projects
+        # update the tree view
+        index = self.VEDT.vista_arbol_proyectos.currentIndex()
+        name = self.model.fileName(index)
+        if index.isValid():
+            if name.endswith(".pdf"):
+                # eliminate the report file from the project
+                try:
+                    os.remove(self.model.filePath(index))
+                except Exception as e:
+                    print(e)
+                self.proyNames = self.readProyNames()
+                self.loadProjects()
+        else:
+            print('No file selected')
