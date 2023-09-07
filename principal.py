@@ -1,7 +1,10 @@
-from controlador.CEDT import CEDT
+"""Módulo principal de la aplicación."""
+
+import sys
 
 from PyQt5 import QtWidgets as qtw
-import sys
+from controlador.CEDT import CEDT
+
 
 if __name__ == '__main__':
     app = qtw.QApplication(sys.argv)
