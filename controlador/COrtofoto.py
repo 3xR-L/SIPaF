@@ -118,7 +118,7 @@ class COrtofoto:
                         img = img.rotate(float(gimbalYawDegree) * -1, expand=True)
 
                         # save the cropped image with its metadata
-                        img.save(self.dirIma + '/RGB/originales/' + image, exif=exif)
+                        img.save(self.dirIma + '/REl GB/originales/' + image, exif=exif)
 
                     except Exception as e:
                         print(e)
